@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: intel-gpu-plugin
+  name: intel-gpu-plugin
+spec:
+  selector:
+    matchLabels:
+      app: intel-gpu-plugin
+  template:
+    metadata:
+      labels:
+        app: intel-gpu-plugin
+    spec:
+      initContainers:
+      - name: intel-gpu-initcontainer
+      containers:
+      - name: intel-gpu-plugin
+        command: ["/usr/local/bin/intel_gpu_device_plugin"]
+        args: ["-shared-dev-num", "4"]

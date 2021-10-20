@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: intel-device-plugin
+resources:
+  - https://raw.githubusercontent.com/intel/intel-device-plugins-for-kubernetes/release-0.22/deployments/gpu_plugin/base/intel-gpu-plugin.yaml
+patches:
+  - intel-device-plugin-patch.yml
